@@ -1,0 +1,3 @@
+author = PvT_Shifty
+version = 0.1
+displayName = Schneiders' mod
