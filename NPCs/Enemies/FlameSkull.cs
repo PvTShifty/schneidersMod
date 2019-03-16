@@ -15,7 +15,7 @@ namespace SchneidersMod.NPCs.Enemies
 
         public override void SetDefaults() {
             npc.width = 25;
-            npc.height = 25;
+            npc.height = 20;
             npc.damage = 20;
             npc.defense = 2;
             npc.lifeMax = 25;
@@ -33,17 +33,23 @@ namespace SchneidersMod.NPCs.Enemies
 			return SpawnCondition.OverworldNightMonster.Chance * 0.5f;
 		}
 
+        public override void NPCLoot() {
+            if (Main.rand.Next(5) == 0) {
+                Item.NewItem(npc.getRect(), mod.ItemType("FireEnchantment"));
+            }
+        }
+
         public override void HitEffect(int hitDirection, double damage) {
 			if (npc.life > 0) {
 				for (int i = 0; i < damage / npc.lifeMax * 100; i++) {
 					Dust dust = Dust.NewDustDirect(npc.position, npc.width, npc.height, 192, hitDirection, -1f, 100, new Color(100, 100, 100, 100), 1f);
-					dust.noGravity = true;
+					dust.noGravity = false;
 				}
 				return;
 			}
 			for (int i = 0; i < 50; i++) {
 				Dust dust = Dust.NewDustDirect(npc.position, npc.width, npc.height, 192, 2 * hitDirection, -2f, 100, new Color(100, 100, 100, 100), 1f);
-				dust.noGravity = true;
+				dust.noGravity = false;
 			}
 		}
     }
