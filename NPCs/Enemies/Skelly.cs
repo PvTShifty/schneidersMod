@@ -30,7 +30,7 @@ namespace SchneidersMod.NPCs.Enemies
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {
             if (spawnInfo.player.ZoneCorrupt) {
-                return 1f;
+                return 0.7f;
             }
             return 0f;
         }

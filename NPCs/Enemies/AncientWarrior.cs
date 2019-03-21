@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using System;
 using Terraria;
 using Terraria.ID;
+using Terraria.Utilities;
 using Terraria.ModLoader;
 
 namespace SchneidersMod.NPCs.Enemies
@@ -9,7 +10,7 @@ namespace SchneidersMod.NPCs.Enemies
     public class AncientWarrior : ModNPC {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Ancient Warrior");
-            Main.npcFrameCount[npc.type] = Main.npcFrameCount[NPCID.DemonEye];
+            Main.npcFrameCount[npc.type] = Main.npcFrameCount[NPCID.Zombie];
         }
 
         public override void SetDefaults() {
@@ -17,7 +18,7 @@ namespace SchneidersMod.NPCs.Enemies
             npc.height = 40;
             npc.damage = 30;
             npc.defense = 5;
-            npc.lifeMax = 200;
+            npc.lifeMax = 125;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.value = 200f;
@@ -28,12 +29,23 @@ namespace SchneidersMod.NPCs.Enemies
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {
-            if(Main.dayTime) {
-                if(spawnInfo.player.ZoneOverworld.day) {
-                    return 1f;
+            if(!Main.dayTime) {
+                if(spawnInfo.player.ZoneOverworldHeight) {
+                    return 0.1f;
                 }
             }
             return 0f;
+        }
+
+        public override void NPCLoot() {
+            if (Main.rand.Next(5) < 1) {
+                var dropChooser = new WeightedRandom<int>();
+                dropChooser.Add(mod.ItemType("AncientSwordBlade"));
+                dropChooser.Add(mod.ItemType("AncientSwordHandle"));
+                dropChooser.Add(mod.ItemType("AncientSwordGuard"));
+                int choice = dropChooser;
+                Item.NewItem(npc.getRect(), choice);
+            }
         }
 
         public override void HitEffect(int hitDirection, double damage) {

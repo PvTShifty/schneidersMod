@@ -34,7 +34,7 @@ namespace SchneidersMod.NPCs.Enemies
 		}
 
         public override void NPCLoot() {
-            if (Main.rand.Next(5) == 0) {
+            if (Main.rand.Next(4) < 1) {
                 Item.NewItem(npc.getRect(), mod.ItemType("FireEnchantment"));
             }
         }
