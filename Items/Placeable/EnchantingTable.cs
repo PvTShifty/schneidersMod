@@ -5,13 +5,12 @@ namespace SchneidersMod.Items.Placeable
 {
     public class EnchantingTable : ModItem
     {
-        public override void SetStaticDefaults()
-        {
+        public override void SetStaticDefaults() {
             DisplayName.SetDefault("Enchantment Table");
             Tooltip.SetDefault("Table for all your enchantment needs.");
         }
-        public override void SetDefaults()
-        {
+
+        public override void SetDefaults() {
             item.width = 28;
             item.height = 14;
             item.maxStack = 1;
