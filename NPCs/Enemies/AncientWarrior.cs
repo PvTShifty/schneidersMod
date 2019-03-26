@@ -7,10 +7,11 @@ using Terraria.ModLoader;
 
 namespace SchneidersMod.NPCs.Enemies
 {
-    public class AncientWarrior : ModNPC {
+    public class AncientWarrior : ModNPC
+    {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Ancient Warrior");
-            Main.npcFrameCount[npc.type] = Main.npcFrameCount[NPCID.Zombie];
+            Main.npcFrameCount[npc.type] = 3;
         }
 
         public override void SetDefaults() {
@@ -21,7 +22,7 @@ namespace SchneidersMod.NPCs.Enemies
             npc.lifeMax = 125;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
-            npc.value = 200f;
+            npc.value = 2000f;
             npc.knockBackResist = 0.7f;
             npc.aiStyle = 3;
             aiType = NPCID.Zombie;
@@ -29,8 +30,8 @@ namespace SchneidersMod.NPCs.Enemies
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {
-            if(!Main.dayTime) {
-                if(spawnInfo.player.ZoneOverworldHeight) {
+            if (!Main.dayTime) {
+                if (spawnInfo.player.ZoneOverworldHeight) {
                     return 0.1f;
                 }
             }
@@ -38,7 +39,7 @@ namespace SchneidersMod.NPCs.Enemies
         }
 
         public override void NPCLoot() {
-            if (Main.rand.Next(5) < 1) {
+            if (Main.rand.Next(3) < 1) {
                 var dropChooser = new WeightedRandom<int>();
                 dropChooser.Add(mod.ItemType("AncientSwordBlade"));
                 dropChooser.Add(mod.ItemType("AncientSwordHandle"));

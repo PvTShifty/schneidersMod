@@ -6,33 +6,39 @@ using Terraria.ModLoader;
 
 namespace SchneidersMod.NPCs.Enemies
 {
-    public class Skelly : ModNPC {
+    public class StickySlime : ModNPC
+    {        
         public override void SetStaticDefaults() {
-            DisplayName.SetDefault("Corrupt Skeleton");
-            Main.npcFrameCount[npc.type] = 3;
+            DisplayName.SetDefault("Sticky Slime");
+            Main.npcFrameCount[npc.type] = 2;
         }
 
         public override void SetDefaults() {
-            npc.width = 18;
-            npc.height = 40;
+            npc.width = 25;
+            npc.height = 20;
             npc.damage = 10;
-            npc.defense = 3;
+            npc.defense = 0;
             npc.lifeMax = 40;
             npc.HitSound = SoundID.NPCHit1;
-            npc.DeathSound = SoundID.NPCDeath2;
-            npc.value = 60f;
-            npc.scale = 0.8f;
-            npc.knockBackResist = 0.5f;
-            npc.aiStyle = 3;
-            aiType = NPCID.Zombie;
-            animationType = NPCID.Zombie;
+            npc.DeathSound = SoundID.NPCDeath1;
+            npc.value = 50f;
+            npc.knockBackResist = 0.8f;
+            npc.aiStyle = 1;
+            aiType = 1;
+            animationType = 1;
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {
-            if (spawnInfo.player.ZoneCorrupt) {
-                return 0.7f;
+            if (Main.dayTime) {
+                if (spawnInfo.player.ZoneOverworldHeight) {
+                    return 0.4f;
+                }
             }
             return 0f;
+        } 
+
+        public override void NPCLoot() {
+            Item.NewItem(npc.getRect(), mod.ItemType("StickyGlue"), Main.rand.Next(1, 6));
         }
 
         public override void HitEffect(int hitDirection, double damage) {

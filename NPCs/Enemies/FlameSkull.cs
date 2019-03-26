@@ -10,7 +10,7 @@ namespace SchneidersMod.NPCs.Enemies
     {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Flame Skull");
-            Main.npcFrameCount[npc.type] = Main.npcFrameCount[NPCID.DemonEye];
+            Main.npcFrameCount[npc.type] = 2;
         }
 
         public override void SetDefaults() {
@@ -30,12 +30,12 @@ namespace SchneidersMod.NPCs.Enemies
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo) {
-			return SpawnCondition.OverworldNightMonster.Chance * 0.5f;
+			return SpawnCondition.OverworldNightMonster.Chance * 0.3f;
 		}
 
         public override void NPCLoot() {
             if (Main.rand.Next(4) < 1) {
-                Item.NewItem(npc.getRect(), mod.ItemType("FireEnchantment"));
+                Item.NewItem(npc.getRect(), mod.ItemType("FireEnchantment"), Main.rand.Next(1, 6));
             }
         }
 
