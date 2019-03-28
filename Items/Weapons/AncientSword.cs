@@ -7,8 +7,7 @@ namespace SchneidersMod.Items.Weapons
 {
     public class AncientSword : ModItem
     {
-        public override void SetStaticDefaults()
-        {
+        public override void SetStaticDefaults() {
             DisplayName.SetDefault("Ancient Sword");
         }
         public override void SetDefaults()
