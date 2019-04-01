@@ -27,7 +27,8 @@ namespace SchneidersMod.Items.Weapons
             item.UseSound = SoundID.Item39;
             item.autoReuse = false;
             item.shoot = 10;
-            item.shootSpeed = 9f;
+            item.scale = 1.5f;
+            item.shootSpeed = 4f;
             item.useAmmo = mod.ItemType("StoneAmmo");
         }
 
@@ -35,10 +36,15 @@ namespace SchneidersMod.Items.Weapons
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(9, 50);
             recipe.AddIngredient(225, 10);
-            recipe.AddIngredient(mod.ItemType("StickyGlue"));
+            recipe.AddIngredient(mod.ItemType("StickyGlue"), 5);
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
+
+        public override Vector2? HoldoutOffset()
+		{
+			return new Vector2(5, 0);
+		}
     }
 }
