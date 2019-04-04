@@ -12,13 +12,13 @@ namespace SchneidersMod.Items.Ammo
         }
 
         public override void SetDefaults() {
-            item.damage = 3;                                // determines the amount of damage.
+            item.damage = 5;                                // determines the amount of damage.
             item.ranged = true;                             // tells the game it's a ranged projectile.
             item.width = 14;                                // hitbox width in px.
             item.height = 14;                               // hitbox height in px.
             item.maxStack = 999;                            // maximum amount the item can stack.
             item.consumable = true;                         // removes the item after it's "consumed".
-            item.knockBack = 2f;                            // determines the amount of knockback the item has.
+            item.knockBack = 2;                            // determines the amount of knockback the item has.
             item.value = 10;                                // determines the amount of copper coins this item is worth.
             item.rare = 1;                                  // determines the rarity of the item.
             item.shoot = mod.ProjectileType("StoneAmmo");   // if this item gets consumed it shoots the projectile "StoneAmmo".
