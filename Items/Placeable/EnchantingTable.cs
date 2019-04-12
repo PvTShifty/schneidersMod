@@ -13,7 +13,7 @@ namespace SchneidersMod.Items.Placeable
         public override void SetDefaults() {
             item.width = 28;                                                // hitbox width in px.
             item.height = 14;                                               // hitbox height in px.
-            item.maxStack = 1;                                              // maximum amount the item can stack.
+            item.maxStack = 99;                                              // maximum amount the item can stack.
             item.useTurn = true;                                            // honestly have no clue.
             item.autoReuse = true;                                          // the item gets reused automatically.
             item.useAnimation = 15;                                         // use the animation number 15.

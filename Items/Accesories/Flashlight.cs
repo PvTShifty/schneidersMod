@@ -22,7 +22,7 @@ namespace SchneidersMod.Items.Accesories
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual) {
-            Player.AddBuff(BuffID.Shine, 1);
+            player.AddBuff(BuffID.Shine, 1);
         }
 
         public override void AddRecipes() {

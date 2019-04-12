@@ -23,7 +23,7 @@ namespace SchneidersMod.Items
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.JungleSpores, 5);
-            recipe.AddTile(TileID.WorkBenches);
+            recipe.AddTile(mod.TileType("Mixer"));
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
