@@ -37,7 +37,7 @@ namespace SchneidersMod.NPCs.Enemies
             }
             return 0f;
         }
-
+        
         public override void NPCLoot() {
             if (Main.rand.Next(3) < 1) {
                 var dropChooser = new WeightedRandom<int>();
@@ -48,7 +48,7 @@ namespace SchneidersMod.NPCs.Enemies
                 Item.NewItem(npc.getRect(), choice);
             }
         }
-
+        
         public override void HitEffect(int hitDirection, double damage) {
 			if (npc.life > 0) {
 				for (int i = 0; i < damage / npc.lifeMax * 100; i++) {

@@ -17,18 +17,19 @@ namespace SchneidersMod.Items.Placeable
             item.value = 20;
             item.rare = 1;
             item.useTurn = true;
-            item.autReuse = true;
+            item.autoReuse = true;
             item.useAnimation = 1;
             item.useTime = 10;
             item.useStyle = 1;
             item.consumable = true;
-            item.creatTile = mod.TileType("Mixer");
+            item.createTile = mod.TileType("Mixer");
         }
 
         public override void AddRecipes() {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.IronBar, 30);
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddIngredient(ItemID.Glass, 10);
+            recipe.AddTile(TileID.Sawmill);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
